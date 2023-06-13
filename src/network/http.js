@@ -13,7 +13,7 @@ export default class HttpClient {
     });
     let data;
     try {
-      data = await res.json();
+      data = await res.json(); // body가 없으면 에러 발생할 수 있다.
     } catch (error) {
       console.error(error);
     }
