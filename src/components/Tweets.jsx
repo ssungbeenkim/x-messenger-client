@@ -10,7 +10,6 @@ const Tweets = memo(({ tweetService, username, addable }) => {
   const [error, setError] = useState('');
   const history = useHistory();
   const { user } = useAuth();
-
   useEffect(() => {
     tweetService
       .getTweets(username)
@@ -24,6 +23,7 @@ const Tweets = memo(({ tweetService, username, addable }) => {
   const onCreated = (tweet) => {
     setTweets((tweets) => [tweet, ...tweets]);
   };
+  // onChange로 바꾸고 소켓에서 받은 정보에 따라서 처리해주도록 바꾼다.
 
   const onDelete = (tweetId) =>
     tweetService

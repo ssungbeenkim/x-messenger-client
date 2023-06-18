@@ -17,7 +17,6 @@ const contextRef = createRef();
 
 export function AuthProvider({ authService, authErrorEventBus, children }) {
   const [user, setUser] = useState(undefined);
-
   useImperativeHandle(contextRef, () => (user ? user.token : undefined));
 
   useEffect(() => {
