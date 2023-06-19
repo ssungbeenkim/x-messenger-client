@@ -16,32 +16,32 @@ const Tweets = memo(({ tweetService, username, addable }) => {
       .then((tweets) => setTweets([...tweets]))
       .catch(onError);
 
-    const stopSync = tweetService.onSync((tweet) => onCreated(tweet));
+    const stopSync = tweetService.onSync((message) => onChange(message));
     return () => stopSync();
   }, [tweetService, username, user]);
 
-  const onCreated = (tweet) => {
-    setTweets((tweets) => [tweet, ...tweets]);
-  };
-  // onChange로 바꾸고 소켓에서 받은 정보에 따라서 처리해주도록 바꾼다.
-
-  const onDelete = (tweetId) =>
-    tweetService
-      .deleteTweet(tweetId)
-      .then(() =>
-        setTweets((tweets) => tweets.filter((tweet) => tweet.id !== tweetId))
-      )
-      .catch((error) => setError(error.toString()));
-
-  const onUpdate = (tweetId, text) =>
-    tweetService
-      .updateTweet(tweetId, text)
-      .then((updated) =>
+  const onChange = (message) => {
+    const command = message.command;
+    switch (command) {
+      case 'create':
+        setTweets((tweets) => [message.tweet, ...tweets]);
+        break;
+      case 'update':
         setTweets((tweets) =>
-          tweets.map((item) => (item.id === updated.id ? updated : item))
-        )
-      )
-      .catch((error) => error.toString());
+          tweets.map((item) =>
+            item.id === message.updated.id ? message.updated : item
+          )
+        );
+        break;
+      case 'delete':
+        setTweets((tweets) => {
+          return tweets.filter((tweet) => tweet.id !== Number(message.id));
+        });
+        break;
+      default:
+        console.log('default');
+    }
+  };
 
   const onUsernameClick = (tweet) => history.push(`/${tweet.username}`);
 
@@ -64,9 +64,9 @@ const Tweets = memo(({ tweetService, username, addable }) => {
           <TweetCard
             key={tweet.id}
             tweet={tweet}
+            onError={onError}
+            tweetService={tweetService}
             owner={tweet.username === user.username}
-            onDelete={onDelete}
-            onUpdate={onUpdate}
             onUsernameClick={onUsernameClick}
           />
         ))}

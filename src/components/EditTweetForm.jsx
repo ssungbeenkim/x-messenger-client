@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const EditTweetForm = ({ tweet, onUpdate, onClose }) => {
+const EditTweetForm = ({ tweet, onClose, onError, tweetService }) => {
   const [text, setText] = useState(tweet.text);
 
   const onSubmit = async (event) => {
     event.preventDefault();
-    onUpdate(tweet.id, text);
+    tweetService.updateTweet(tweet.id, text).catch(onError);
     onClose();
   };
 

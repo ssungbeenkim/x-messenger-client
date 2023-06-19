@@ -7,7 +7,7 @@ const NewTweetForm = ({ tweetService, onError }) => {
     event.preventDefault();
     tweetService
       .postTweet(tweet)
-      .then((created) => {
+      .then(() => {
         setTweet('');
       })
       .catch(onError);
