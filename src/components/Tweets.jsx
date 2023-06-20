@@ -39,7 +39,8 @@ const Tweets = memo(({ tweetService, username, addable }) => {
         });
         break;
       default:
-        console.log('default');
+        console.log('something went wrong 👶🏻');
+        break;
     }
   };
 
