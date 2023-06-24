@@ -1,17 +1,17 @@
 import axios from 'axios';
-import axiosRetry from 'axios-retry';
+// import axiosRetry from 'axios-retry';
 
-const defaultRetryConfig = {
-  retries: 5,
-  initialDelayMs: 100,
-};
+// const defaultRetryConfig = {
+//   retries: 5,
+//   initialDelayMs: 100,
+// };
 
 export default class HttpClient {
   constructor(
     baseURL,
     authErrorEventBus,
-    getCsrfToken,
-    config = defaultRetryConfig
+    getCsrfToken
+    // config = defaultRetryConfig
   ) {
     this.authErrorEventBus = authErrorEventBus;
     this.getCsrfToken = getCsrfToken;
@@ -20,17 +20,17 @@ export default class HttpClient {
       headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     });
-    axiosRetry(this.client, {
-      retries: config.retries,
-      retryDelay: (retry) => {
-        const delay = Math.pow(2, retry) * config.initialDelayMs;
-        const jitter = delay * 0.1 * Math.random();
-        return delay + jitter;
-      },
-      retryCondition: (err) =>
-        axiosRetry.isNetworkOrIdempotentRequestError(err) ||
-        err.response.status === 429,
-    });
+    // axiosRetry(this.client, {
+    //   retries: config.retries,
+    //   retryDelay: (retry) => {
+    //     const delay = Math.pow(2, retry) * config.initialDelayMs;
+    //     const jitter = delay * 0.1 * Math.random();
+    //     return delay + jitter;
+    //   },
+    //   retryCondition: (err) =>
+    //     axiosRetry.isNetworkOrIdempotentRequestError(err) ||
+    //     err.response.status === 429,
+    // });
   }
 
   async fetch(url, options) {
