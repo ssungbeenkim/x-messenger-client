@@ -7,7 +7,7 @@ export default class Socket {
     }); // https://socket.io/docs/v4/middlewares/#sending-credentials
 
     this.io.on('connect_error', (err) => {
-      console.log('socket error', err.message);
+      // console.log('socket error', err.message); // TODO: 로그인 안되었을 경우 소켓 에러 처리
     });
   }
 
