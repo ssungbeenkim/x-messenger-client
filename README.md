@@ -1,3 +1,3 @@
 - [사용해보기](https://beautiful-hummingbird-0ed56a.netlify.app)
-- 소켓 모든 활동에서 활성화
+- 소켓 모든 활동에서 활성화 o
 - 자동 로그아웃
