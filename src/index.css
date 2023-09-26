@@ -1,8 +1,8 @@
 :root {
   --color-white: #f9fafa;
-  --color-black: #141518;
-  --color-blue: #1a9ff0;
-  --color-darkBlue: #073d5d;
+  --color-black: #000000;
+  --color-blue: #1c9bef;
+  --color-darkBlue: #000000;
   --color-grey: #dee0e0;
   --color-darkGrey: #969696;
   --color-red: #cc473d;
@@ -69,19 +69,19 @@ button {
 }
 
 .logo-img {
-  width: 32px;
-  height: 32px;
+  width: 80px;
+  height: 80px;
 }
 
-.logo-name {
-  font-size: 2rem;
-  margin: 8px;
-}
+/* .logo-name {
+  font-size: 1.3rem;
+  margin: 4px;
+} */
 
 .logo-user {
   font-size: 0.7rem;
   color: var(--color-blue);
-  padding-top: 8px;
+  /* padding-top: 8px; */
 }
 
 .menu {
@@ -90,7 +90,7 @@ button {
 
 .menu-item {
   color: var(--color-white);
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .banner {
