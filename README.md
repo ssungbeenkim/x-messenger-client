@@ -1,11 +1,10 @@
-# Dwitter
+# X-Messenger
 
-<br/>
- 
-## 서비스 소개 
-- 실시간 채팅이 가능한 웹 어플리케이션입니다. 
+## 서비스 소개
+
+- 실시간 채팅이 가능한 웹 어플리케이션입니다.
 - [배포 링크](https://beautiful-hummingbird-0ed56a.netlify.app)
-- [Client Repository](https://github.com/wandakim/Dwitter-Client)
+- [Server Repository](https://github.com/wandakim/X_Messenger)
 
 <br />
  
